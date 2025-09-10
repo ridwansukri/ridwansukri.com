@@ -1,0 +1,195 @@
+---
+import Button from "../components/button.astro";
+import PageHeading from "../components/page-heading.astro";
+import { siteConfig } from "../config/site";
+import Layout from "../layouts/main.astro";
+---
+
+<Layout title="Resume - Ridwan Sukri">
+  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+    <PageHeading
+      title="Resume"
+      description="3rd Semester IT Student | Aspiring DevOps Engineer | Cloud Enthusiast with hands-on cybersecurity experience through TryHackMe"
+    />
+
+    <div class="mt-8 space-y-8">
+      <!-- Download CV Button -->
+      <div class="flex justify-center p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg">
+        <Button text="📄 Download Full Resume (PDF)" link={siteConfig.links.cv} />
+      </div>
+
+      <!-- Professional Summary -->
+      <div class="space-y-4">
+        <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Professional Summary</h2>
+        <p class="text-neutral-600 dark:text-neutral-400">
+          Passionate 3rd semester IT student with strong foundation in DevOps and cybersecurity practices.
+          Completed multiple TryHackMe learning paths including Web Application Pentesting, DevSecOps, and Security Engineer.
+          Actively building hands-on experience through personal projects, open-source contributions, and self-directed learning in AWS, Docker, and Infrastructure as Code.
+        </p>
+      </div>
+
+      <!-- Core Skills -->
+      <div class="space-y-4">
+        <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Technical Skills</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 border border-dashed rounded-lg border-neutral-300 dark:border-neutral-600">
+            <h3 class="font-semibold mb-2 text-neutral-800 dark:text-neutral-200">☁️ Cloud & DevOps</h3>
+            <ul class="text-sm space-y-1 text-neutral-600 dark:text-neutral-400">
+              <li>• AWS (EC2, S3, Lambda, VPC) - Learning</li>
+              <li>• Docker & Containerization</li>
+              <li>• Infrastructure as Code (Terraform - Learning)</li>
+              <li>• CI/CD Concepts (GitHub Actions, GitLab CI)</li>
+              <li>• Linux System Administration</li>
+            </ul>
+          </div>
+
+          <div class="p-4 border border-dashed rounded-lg border-neutral-300 dark:border-neutral-600">
+            <h3 class="font-semibold mb-2 text-neutral-800 dark:text-neutral-200">💻 Programming & Scripting</h3>
+            <ul class="text-sm space-y-1 text-neutral-600 dark:text-neutral-400">
+              <li>• Python (Automation Scripts)</li>
+              <li>• Bash Scripting</li>
+              <li>• JavaScript & TypeScript</li>
+              <li>• Git Version Control</li>
+              <li>• YAML & JSON Configuration</li>
+            </ul>
+          </div>
+
+          <div class="p-4 border border-dashed rounded-lg border-neutral-300 dark:border-neutral-600">
+            <h3 class="font-semibold mb-2 text-neutral-800 dark:text-neutral-200">🔒 Cybersecurity</h3>
+            <ul class="text-sm space-y-1 text-neutral-600 dark:text-neutral-400">
+              <li>• OWASP Top 10 Vulnerabilities</li>
+              <li>• Web Application Penetration Testing</li>
+              <li>• Network Security Fundamentals</li>
+              <li>• DevSecOps Practices</li>
+              <li>• Incident Response Basics</li>
+            </ul>
+          </div>
+
+          <div class="p-4 border border-dashed rounded-lg border-neutral-300 dark:border-neutral-600">
+            <h3 class="font-semibold mb-2 text-neutral-800 dark:text-neutral-200">🛠️ Tools & Platforms</h3>
+            <ul class="text-sm space-y-1 text-neutral-600 dark:text-neutral-400">
+              <li>• Astro, Tailwind CSS (This Portfolio)</li>
+              <li>• MySQL, PostgreSQL</li>
+              <li>• Nginx, Apache</li>
+              <li>• VS Code, Git, GitHub</li>
+              <li>• TryHackMe Platform (Active User)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience (Projects & Learning) -->
+      <div class="space-y-4">
+        <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Experience & Projects</h2>
+
+        <div class="space-y-6">
+          <div class="relative pl-8 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-blue-500 before:rounded-full">
+            <h3 class="font-semibold text-neutral-800 dark:text-neutral-200">Personal DevOps Portfolio Development</h3>
+            <p class="text-sm text-neutral-500 dark:text-neutral-500">Self-Directed Project • 2025 - Present</p>
+            <ul class="mt-2 text-sm space-y-1 text-neutral-600 dark:text-neutral-400">
+              <li>• Built responsive portfolio website using Astro and Tailwind CSS</li>
+              <li>• Implementing deployment to AWS Amplify with CI/CD practices</li>
+              <li>• Optimized for SEO and performance with modern web standards</li>
+              <li>• Integrated GitHub Actions for automated testing and deployment</li>
+            </ul>
+          </div>
+
+          <div class="relative pl-8 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-green-500 before:rounded-full">
+            <h3 class="font-semibold text-neutral-800 dark:text-neutral-200">TryHackMe Cybersecurity Learning</h3>
+            <p class="text-sm text-neutral-500 dark:text-neutral-500">Self-Paced Online Learning • 2024 - Present</p>
+            <ul class="mt-2 text-sm space-y-1 text-neutral-600 dark:text-neutral-400">
+              <li>• Completed Web Application Pentesting path (25+ rooms)</li>
+              <li>• Finished DevSecOps learning path with hands-on labs</li>
+              <li>• Achieved Security Engineer path completion</li>
+              <li>• Practiced vulnerability assessment and ethical hacking techniques</li>
+            </ul>
+          </div>
+
+          <div class="relative pl-8 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-purple-500 before:rounded-full">
+            <h3 class="font-semibold text-neutral-800 dark:text-neutral-200">Academic Projects & Lab Work</h3>
+            <p class="text-sm text-neutral-500 dark:text-neutral-500">University IT Program • 2024 - Present</p>
+            <ul class="mt-2 text-sm space-y-1 text-neutral-600 dark:text-neutral-400">
+              <li>• Implemented database management systems using MySQL and PostgreSQL</li>
+              <li>• Developed automation scripts for system administration tasks</li>
+              <li>• Participated in group projects using Git version control</li>
+              <li>• Applied secure coding practices in software development assignments</li>
+            </ul>
+          </div>
+
+          <div class="relative pl-8 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-orange-500 before:rounded-full">
+            <h3 class="font-semibold text-neutral-800 dark:text-neutral-200">Open Source Contributions (Planned)</h3>
+            <p class="text-sm text-neutral-500 dark:text-neutral-500">Community Involvement • 2025 - Ongoing</p>
+            <ul class="mt-2 text-sm space-y-1 text-neutral-600 dark:text-neutral-400">
+              <li>• Contributing to DevOps documentation and learning resources</li>
+              <li>• Participating in Kubernetes and Jenkins community discussions</li>
+              <li>• Planning to contribute to beginner-friendly open source projects</li>
+              <li>• Sharing knowledge through blog posts and tutorials</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education & Certifications -->
+      <div class="space-y-4">
+        <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Education & Certifications</h2>
+
+        <div class="space-y-3">
+          <div class="p-4 bg-neutral-50 dark:bg-neutral-900 rounded-lg">
+            <h3 class="font-semibold text-neutral-800 dark:text-neutral-200">🎓 Bachelor of Information Technology</h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-400">[University Name] • 2024 - Present (3rd Semester)</p>
+            <p class="text-xs text-neutral-500 dark:text-neutral-500 mt-1">
+              Relevant Coursework: Database Management, Network Security, Software Engineering, System Administration
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="p-3 border border-dashed rounded-lg border-green-400 dark:border-green-600 bg-green-50 dark:bg-green-900/20">
+              <p class="text-sm font-medium text-green-800 dark:text-green-300">
+                ✅ TryHackMe - Web Application Pentesting
+              </p>
+            </div>
+            <div class="p-3 border border-dashed rounded-lg border-green-400 dark:border-green-600 bg-green-50 dark:bg-green-900/20">
+              <p class="text-sm font-medium text-green-800 dark:text-green-300">
+                ✅ TryHackMe - DevSecOps Path
+              </p>
+            </div>
+            <div class="p-3 border border-dashed rounded-lg border-green-400 dark:border-green-600 bg-green-50 dark:bg-green-900/20">
+              <p class="text-sm font-medium text-green-800 dark:text-green-300">
+                ✅ TryHackMe - Security Engineer
+              </p>
+            </div>
+            <div class="p-3 border border-dashed rounded-lg border-green-400 dark:border-green-600 bg-green-50 dark:bg-green-900/20">
+              <p class="text-sm font-medium text-green-800 dark:text-green-300">
+                ✅ TryHackMe - Jr Penetration Tester
+              </p>
+            </div>
+            <div class="p-3 border border-dashed rounded-lg border-green-400 dark:border-green-600 bg-green-50 dark:bg-green-900/20">
+              <p class="text-sm font-medium text-blue-800 dark:text-blue-300">
+                ✅ AWS Cloud Practitioner
+              </p>
+            </div>
+            <div class="p-3 border border-dashed rounded-lg border-blue-400 dark:border-blue-600 bg-blue-50 dark:bg-blue-900/20">
+              <p class="text-sm font-medium text-blue-800 dark:text-blue-300">
+                📚 AWS Certified Solutions Architect - Associate
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="space-y-4">
+        <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Get In Touch</h2>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+          🎯 <strong>Seeking DevOps/Cloud Engineering Internship Opportunities</strong>
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <Button text="📧 Email" link={`mailto:${siteConfig.links.email}`} />
+          <Button text="💼 LinkedIn" link={siteConfig.links.linkedin} />
+          <Button text="🐙 GitHub" link={siteConfig.links.github} />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

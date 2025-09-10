@@ -1,0 +1,153 @@
+---
+import { Image } from 'astro:assets';
+import experiences from "../collections/experiences.json";
+import AboutExperience from "../components/about-experience.astro";
+import PageHeading from "../components/page-heading.astro";
+import Layout from "../layouts/main.astro";
+import { siteConfig } from "../config/site";
+import aboutImage from "/public/assets/images/about.jpg";
+---
+
+<Layout title="About - Ridwan Sukri">
+  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+    <PageHeading
+      title="About Me"
+      description="Hello 👋 I'm Ridwan Sukri, a passionate 3rd semester IT student from Indonesia, specializing in DevOps, Cloud Engineering, and cybersecurity."
+    />
+
+    <Image 
+      src={aboutImage} 
+      alt="Ridwan Sukri - DevOps Engineer" 
+      class="relative z-30 w-full my-10 rounded-xl" 
+      loading="eager"
+      decoding="async"
+      width={800}
+      height={450}
+      format="webp"
+    />
+
+    <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">My Journey into DevOps</h2>
+    <p class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg">
+      I'm a dedicated 3rd semester IT student with an intense passion for DevOps and Cloud Engineering.
+      While I may not have professional work experience yet, I've been actively building my expertise through hands-on learning,
+      completing comprehensive cybersecurity paths on TryHackMe, and working on real-world projects that demonstrate my commitment to this field.
+    </p>
+
+    <div class="p-4 my-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+      <p class="text-sm text-blue-800 dark:text-blue-300">
+        <strong>🎯 Current Goal:</strong> Seeking DevOps/Cloud Engineering internship opportunities to apply my theoretical knowledge
+        in real-world scenarios and contribute to meaningful projects while continuing my professional development.
+      </p>
+    </div>
+
+    <h2 class="mt-8 mb-4 text-2xl font-bold dark:text-neutral-200">My Three Core Learning Areas</h2>
+
+    <div class="space-y-6">
+      <!-- DevOps & Cloud Computing -->
+      <div class="p-6 border border-dashed rounded-lg border-neutral-300 dark:border-neutral-600">
+        <h3 class="flex items-center mb-3 text-xl font-semibold text-neutral-800 dark:text-neutral-200">
+          <span class="mr-3 text-2xl">☁️</span> DevOps & Cloud Engineering
+        </h3>
+        <p class="mb-3 text-neutral-600 dark:text-neutral-400">
+          I'm building my expertise in modern DevOps practices and cloud infrastructure through self-directed learning and hands-on projects:
+        </p>
+        <ul class="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
+          <li>• Learning Infrastructure as Code with Terraform and AWS CloudFormation</li>
+          <li>• Implementing CI/CD pipelines using GitHub Actions and GitLab CI</li>
+          <li>• Containerization with Docker and orchestration concepts with Kubernetes</li>
+          <li>• Building this portfolio website with modern deployment practices (AWS Amplify)</li>
+        </ul>
+      </div>
+
+      <!-- Cyber Security -->
+      <div class="p-6 border border-dashed rounded-lg border-neutral-300 dark:border-neutral-600">
+        <h3 class="flex items-center mb-3 text-xl font-semibold text-neutral-800 dark:text-neutral-200">
+          <span class="mr-3 text-2xl">🔒</span> DevSecOps & Cybersecurity
+        </h3>
+        <p class="mb-3 text-neutral-600 dark:text-neutral-400">
+          Through TryHackMe and self-study, I've developed a strong foundation in security practices that integrate with DevOps:
+        </p>
+        <ul class="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
+          <li>• Completed Web Application Pentesting, DevSecOps, and Security Engineer paths</li>
+          <li>• Understanding of OWASP Top 10 and secure coding practices</li>
+          <li>• Experience with vulnerability assessment and basic incident response</li>
+          <li>• Integration of security practices into CI/CD workflows</li>
+        </ul>
+      </div>
+
+      <!-- Learning & Development -->
+      <div class="p-6 border border-dashed rounded-lg border-neutral-300 dark:border-neutral-600">
+        <h3 class="flex items-center mb-3 text-xl font-semibold text-neutral-800 dark:text-neutral-200">
+          <span class="mr-3 text-2xl">📚</span> Continuous Learning & Growth
+        </h3>
+        <p class="mb-3 text-neutral-600 dark:text-neutral-400">
+          As a student, I'm constantly expanding my knowledge through multiple channels:
+        </p>
+        <ul class="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
+          <li>• Academic coursework in database management, network security, and system administration</li>
+          <li>• Active participation in online learning communities and forums</li>
+          <li>• Planning to contribute to open-source DevOps projects to gain collaborative experience</li>
+          <li>• Preparing for AWS Cloud Practitioner certification to validate cloud knowledge</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="mt-8 mb-4 text-2xl font-bold dark:text-neutral-200">Why I'm Passionate About DevOps</h2>
+    <p class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg mb-4">
+      DevOps represents the perfect intersection of my interests: technology, automation, security, and problem-solving.
+      I'm fascinated by how DevOps practices can transform the way teams build, deploy, and maintain software systems.
+      The culture of collaboration, continuous improvement, and automation aligns perfectly with my values and career aspirations.
+    </p>
+
+    <div class="p-4 my-6 bg-green-50 dark:bg-green-900/20 rounded-lg">
+      <h3 class="font-semibold text-green-800 dark:text-green-300 mb-2">🚀 What I Can Bring to an Internship:</h3>
+      <ul class="space-y-1 text-sm text-green-700 dark:text-green-400">
+        <li>• Strong theoretical foundation combined with hands-on learning experience</li>
+        <li>• Eagerness to learn and adapt to new technologies and practices</li>
+        <li>• Security-minded approach to infrastructure and development</li>
+        <li>• Fresh perspective and enthusiasm for modern DevOps practices</li>
+        <li>• Commitment to continuous learning and professional development</li>
+      </ul>
+    </div>
+
+    <h2 class="mt-8 mb-4 text-2xl font-bold dark:text-neutral-200">My Learning Timeline</h2>
+
+    <div class="space-y-4">
+      <div class="relative pl-8 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-blue-500 before:rounded-full">
+        <h3 class="font-semibold text-neutral-800 dark:text-neutral-200">Current Focus (2025)</h3>
+        <ul class="mt-2 text-sm space-y-1 text-neutral-600 dark:text-neutral-400">
+          <li>• Completing AWS Solution Architect certification</li>
+          <li>• Building portfolio projects demonstrating DevOps practices</li>
+          <li>• Contributing to open-source projects</li>
+          <li>• Seeking internship opportunities</li>
+        </ul>
+      </div>
+
+      <div class="relative pl-8 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-green-500 before:rounded-full">
+        <h3 class="font-semibold text-neutral-800 dark:text-neutral-200">2024 Achievements</h3>
+        <ul class="mt-2 text-sm space-y-1 text-neutral-600 dark:text-neutral-400">
+          <li>• Completed 5 major TryHackMe learning paths</li>
+          <li>• Started university IT program</li>
+          <li>• Completing AWS Cloud Practitioner certification</li>
+          <li>• Gained hands-on experience with Linux and scripting</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="mt-8 mb-2 text-2xl font-bold dark:text-neutral-200">Let's Connect!</h2>
+    <p class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg">
+      I'm excited about connecting with industry professionals, fellow students, and anyone passionate about DevOps and cloud technologies.
+      Whether you're looking for an eager intern, want to discuss the latest in DevOps, or have advice for someone starting their journey,
+      I'd love to hear from you! Feel free to <a href={siteConfig.links.linkedin} target="_blank" class="text-indigo-600 underline">connect with me on LinkedIn</a>,
+      check out my learning projects on <a href={siteConfig.links.github} target="_blank" class="text-indigo-600 underline">GitHub</a>,
+      or send me an <a href={`mailto:${siteConfig.links.email}`} class="text-indigo-600 underline">email</a> to start a conversation.
+    </p>
+
+    <div class="mt-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
+      <p class="text-sm text-yellow-800 dark:text-yellow-300">
+        <strong>💼 Open to Opportunities:</strong> I'm actively seeking DevOps/Cloud Engineering internships for 2025.
+        If your organization values fresh talent, continuous learning, and security-first thinking, let's talk!
+      </p>
+    </div>
+  </section>
+</Layout>

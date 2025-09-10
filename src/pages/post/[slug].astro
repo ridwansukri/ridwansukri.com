@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/main.astro";
+import PageHeading from "../../components/page-heading.astro";
+
+export async function getStaticPaths() {
+	const postEntries = await getCollection("post");
+	return postEntries.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { title, description, dateFormatted } = entry.data;
+---
+
+<Layout title={`${title} - Ridwan Sukri`} description={description}>
+	<main class="relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-neutral-950 md:rounded-t-md text-neutral-900">
+		<div class="relative flex flex-col px-5 pt-6 border-t border-b-0 md:border-r md:border-l md:pt-20 lg:px-0 justify-stretch md:rounded-t-2xl border-neutral-200 dark:border-neutral-800">
+			<div class="absolute top-0 left-0 hidden w-px h-full mt-1 -translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"></div>
+			<div class="absolute top-0 right-0 hidden w-px h-full mt-1 translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"></div>
+			<h1 class="w-full max-w-2xl mx-auto text-3xl font-bold leading-tight tracking-tighter text-left md:mb-12 md:text-4xl dark:text-neutral-100 lg:text-5xl md:leading-none">
+				{title}
+			</h1>
+			<div class="w-full max-w-2xl mx-auto mt-4 mb-8 text-sm text-neutral-600 dark:text-neutral-400">
+				<time>{dateFormatted}</time> • {description}
+			</div>
+		</div>
+
+		<article class="w-full max-w-2xl mx-auto mb-20 prose-sm prose px-7 lg:px-0 lg:prose-lg dark:prose-invert
+			prose-headings:scroll-mt-20 prose-headings:font-bold 
+			prose-h2:text-2xl prose-h3:text-xl
+			prose-p:leading-relaxed
+			prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
+			prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100
+			prose-code:text-pink-600 dark:prose-code:text-pink-400 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-sm prose-code:before:content-[''] prose-code:after:content-['']
+			prose-pre:bg-neutral-900 dark:prose-pre:bg-neutral-950 prose-pre:text-neutral-100 prose-pre:border prose-pre:border-neutral-200 dark:prose-pre:border-neutral-800
+			[&_pre_code]:bg-transparent [&_pre_code]:text-neutral-100 [&_pre_code]:p-0
+			prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic
+			prose-img:rounded-xl prose-img:shadow-lg prose-img:mx-auto
+			prose-ul:list-disc prose-ol:list-decimal
+			prose-li:marker:text-neutral-400 dark:prose-li:marker:text-neutral-600">
+			<Content />
+		</article>
+	</main>
+</Layout>

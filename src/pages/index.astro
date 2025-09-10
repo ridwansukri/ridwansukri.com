@@ -1,0 +1,103 @@
+---
+import { Image } from 'astro:assets';
+import Button from "../components/button.astro";
+import Projects from "../components/home/projects.astro";
+import Separator from "../components/home/separator.astro";
+import Writings from "../components/home/writings.astro";
+import { siteConfig } from "../config/site";
+import Layout from "../layouts/main.astro";
+import profilePhoto from "/public/assets/images/photo.png";
+---
+
+<Layout title={siteConfig.title}>
+  <div
+    class="relative z-20 w-full max-w-4xl mx-auto mt-16 px-7 md:mt-24 lg:mt-32 xl:px-0"
+  >
+    <div class="flex flex-col items-start md:flex-row md:items-start">
+      <div class="relative w-full md:w-1/2 md:pt-20 lg:pt-24">
+        <h1
+          class="mb-5 text-4xl font-bold leading-tight md:text-4xl lg:text-6xl dark:text-white"
+        >
+          DevOps Engineer Who Builds <span class="text-blue-600 dark:text-blue-400">Secure</span> & <span class="text-green-600 dark:text-green-400">Scalable</span> Cloud Infrastructure.
+        </h1>
+        <p class="mb-6 text-base text-neutral-600 dark:text-neutral-400">
+          I'm <span class="font-semibold">Ridwan Sukri</span>, a <span class="font-semibold">DevOps Engineer</span> & <span class="font-semibold">Cloud Architect</span> from Indonesia specializing in <span class="font-semibold">AWS/Azure/GCP</span>. <br class="hidden lg:block" />
+          I help companies <span class="font-semibold text-green-600 dark:text-green-400">reduce deployment time by 70%</span> and <span class="font-semibold text-blue-600 dark:text-blue-400">automate security workflows</span>.
+        </p>
+        <p class="mb-2 font-semibold text-neutral-800 dark:text-neutral-200">
+          🚀 I can help you achieve:
+        </p>
+        <ul
+          class="py-2 space-y-[3px] text-sm list-disc list-inside text-neutral-500 dark:text-neutral-400"
+        >
+          <li><span class="font-medium">AWS/Azure/GCP Cloud Architecture</span> - Multi-cloud infrastructure design</li>
+          <li><span class="font-medium">CI/CD Pipeline Automation</span> - Reduce deployment time by 70%</li>
+          <li><span class="font-medium">Infrastructure as Code (Terraform)</span> - Scalable & maintainable infrastructure</li>
+          <li><span class="font-medium">Kubernetes Orchestration</span> - Container management at scale</li>
+          <li><span class="font-medium">DevSecOps Implementation</span> - Security-first development approach</li>
+          <li><span class="font-medium">Cloud Cost Optimization</span> - Reduce infrastructure costs by 40%</li>
+        </ul>
+      </div>
+
+      <div
+        class="relative w-full mt-10 md:flex md:justify-end md:pl-10 md:w-1/2 md:mt-0"
+      >
+        <div class="relative z-50 w-full max-w-md mx-auto md:mx-0">
+          <div
+            class="absolute bottom-0 z-40 w-16 h-16 -translate-x-6 lg:top-auto top-0 lg:-translate-y-[320px] rounded-full hidden md:block"
+          >
+            <span
+              class="relative z-20 flex items-center justify-center w-full h-full text-2xl border-8 border-white rounded-full dark:border-neutral-950 bg-neutral-100 dark:bg-neutral-900"
+            >
+              <span
+                class="flex items-center justify-center w-full h-full bg-white border border-dashed rounded-full dark:bg-neutral-950 border-neutral-300 dark:border-neutral-700"
+              >👋</span
+              >
+            </span>
+          </div>
+          <div class="relative z-30 px-10 md:px-10">
+            <Image
+              src={profilePhoto}
+              alt="Ridwan Sukri - DevOps Engineer & Cloud Architect"
+              loading="eager"
+              decoding="async"
+              class="relative z-30 w-full aspect-[790/1189] max-w-sm mx-auto md:max-w-md dark:-translate-y-0.5"
+              width={400}
+              height={600}
+              format="webp"
+            />
+          </div>
+          <div
+            class="absolute bottom-0 right-0 z-20 w-full h-full lg:h-[420px] translate-x-0 -translate-y-px border border-dashed rounded-2xl bg-gradient-to-r dark:from-neutral-950 dark:via-black dark:to-neutral-950 from-white via-neutral-50 to-white border-neutral-300 dark:border-neutral-700 hidden md:block"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Buttons and Social Proof outside of photo container -->
+    <div class="flex flex-col items-center mt-8 md:mt-6">
+      <!-- Buttons below photo -->
+      <div class="flex flex-wrap gap-3 justify-center">
+        <Button text="View My Projects" link="/projects" />
+        <Button text="Download Resume" link={siteConfig.links.cv} />
+        <Button text="GitHub" link={siteConfig.links.github} />
+      </div>
+      
+      <!-- Social Proof below buttons -->
+      <div class="mt-6 p-3 bg-neutral-50 dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800 max-w-2xl w-full">
+        <p class="text-sm text-center text-neutral-600 dark:text-neutral-400">
+          <span class="font-semibold text-green-600 dark:text-green-400">✅ TryHackMe Certified</span>
+          <span class="hidden sm:inline"> - </span>
+          <br class="sm:hidden" />
+          <span>Completed Web App Pentesting, DevSecOps & Security Engineer paths</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <Separator text="Featured DevOps & Cloud Projects" />
+  <Projects />
+  <Separator text="Latest Technical Articles & Insights" />
+  <Writings />
+</Layout>

@@ -1,0 +1,44 @@
+[
+	{
+		"name": "AWS Infrastructure Automation",
+		"description": "Automated multi-region AWS infrastructure deployment using Terraform and GitHub Actions",
+		"image": "/assets/images/projects/aws-infrastructure.svg",
+		"url": "https://github.com/ridwansukri/aws-infrastructure",
+		"tags": ["AWS", "Terraform", "GitHub Actions", "IaC"]
+	},
+	{
+		"name": "Kubernetes CI/CD Pipeline",
+		"description": "End-to-end CI/CD pipeline for microservices deployment on EKS with ArgoCD",
+		"image": "/assets/images/projects/k8s-pipeline.svg",
+		"url": "https://github.com/ridwansukri/k8s-cicd",
+		"tags": ["Kubernetes", "EKS", "ArgoCD", "Jenkins", "Docker"]
+	},
+	{
+		"name": "Laravel Cloud Deployment",
+		"description": "Scalable Laravel application deployment on AWS with auto-scaling and load balancing",
+		"image": "/assets/images/projects/laravel-aws.svg",
+		"url": "https://github.com/ridwansukri/laravel-aws",
+		"tags": ["Laravel", "AWS EC2", "RDS", "S3", "CloudFront"]
+	},
+	{
+		"name": "Security Monitoring System",
+		"description": "Real-time security monitoring and alerting system using ELK Stack and Prometheus",
+		"image": "/assets/images/projects/security-monitoring.svg",
+		"url": "https://github.com/ridwansukri/security-monitoring",
+		"tags": ["ElasticSearch", "Prometheus", "Grafana", "Security"]
+	},
+	{
+		"name": "Serverless Video Transcription",
+		"description": "AWS Lambda-based video transcription and translation service with multi-language support",
+		"image": "/assets/images/projects/video-transcription.svg",
+		"url": "https://github.com/ridwansukri/video-transcription",
+		"tags": ["AWS Lambda", "Transcribe", "Translate", "Python", "S3"]
+	},
+	{
+		"name": "Infrastructure Cost Optimizer",
+		"description": "Automated tool for analyzing and optimizing AWS infrastructure costs",
+		"image": "/assets/images/projects/cost-optimizer.svg",
+		"url": "https://github.com/ridwansukri/aws-cost-optimizer",
+		"tags": ["AWS", "Python", "Cost Optimization", "CloudWatch"]
+	}
+]
