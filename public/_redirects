@@ -1,0 +1,8 @@
+# Cloudflare Pages Redirects
+# Format: /old-path /new-path [status-code]
+
+# Redirect non-www to www (entire site)
+https://ridwansukri.com/* https://www.ridwansukri.com/:splat 301
+
+# Example legacy redirects
+# /old-blog/* /blog/:splat 301

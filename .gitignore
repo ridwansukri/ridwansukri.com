@@ -26,5 +26,9 @@ node_modules/
 # jetbrains setting folder
 .idea/
 
-# amplify docs
+# Cloudflare
+.wrangler/
+.dev.vars
+
+# docs folder (jika tidak ingin commit docs)
 docs/
