@@ -1,13 +1,13 @@
 # 🚀 ridwansukri.com - DevOps Portfolio Website
 
 [![Built with Astro](https://img.shields.io/badge/Built%20with-Astro-FF5D01?logo=astro&logoColor=white)](https://astro.build)
-[![AWS Amplify](https://img.shields.io/badge/Hosted%20on-AWS%20Amplify-FF9900?logo=aws&logoColor=white)](https://aws.amazon.com/amplify/)
+[![Cloudflare Pages](https://img.shields.io/badge/Hosted%20on-Cloudflare%20Pages-F38020?logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF?logo=github-actions&logoColor=white)](https://github.com/features/actions)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ## 📖 Overview
 
-Personal portfolio website showcasing DevOps expertise, cloud architecture projects, and technical writings. Built with modern web technologies and deployed using AWS infrastructure with automated CI/CD pipeline.
+Personal portfolio website showcasing DevOps expertise, cloud architecture projects, and technical writings. Built with modern web technologies and deployed using Cloudflare Pages with automated CI/CD pipeline.
 
 🌐 **Live Demo**: [https://www.ridwansukri.com](https://www.ridwansukri.com)
 
@@ -20,11 +20,11 @@ Personal portfolio website showcasing DevOps expertise, cloud architecture proje
 - **Package Manager**: pnpm - Fast, disk space efficient package manager
 
 ### Infrastructure & DevOps
-- **Hosting**: AWS Amplify - Full-stack development platform
-- **CDN**: CloudFront - Global content delivery network
-- **CI/CD**: GitHub Actions + AWS Amplify Console
-- **Monitoring**: CloudWatch - Application and infrastructure monitoring
-- **Security**: CSP Headers, HTTPS enforcement, Security headers
+- **Hosting**: Cloudflare Pages - Fast, secure static site hosting
+- **CDN**: Cloudflare CDN - Global content delivery network
+- **CI/CD**: GitHub Integration + Cloudflare Pages automatic deployment
+- **Monitoring**: Cloudflare Analytics - Web analytics and performance monitoring
+- **Security**: CSP Headers, HTTPS enforcement, DDoS protection, Security headers
 
 ### Development Tools
 - **Code Quality**: Biome - Fast formatter and linter
@@ -36,15 +36,16 @@ Personal portfolio website showcasing DevOps expertise, cloud architecture proje
 
 ```mermaid
 graph TD
-    A[GitHub Repository] -->|Push| B[GitHub Actions]
-    B -->|Trigger| C[AWS Amplify Build]
-    C -->|Deploy| D[CloudFront CDN]
+    A[GitHub Repository] -->|Push| B[Cloudflare Pages]
+    B -->|Build| C[Build Process]
+    C -->|Deploy| D[Cloudflare CDN]
     D -->|Serve| E[Users]
     
-    F[Route 53] -->|DNS| D
-    G[Certificate Manager] -->|SSL/TLS| D
-    H[CloudWatch] -->|Monitor| C
+    F[Cloudflare DNS] -->|DNS| D
+    G[SSL Certificate] -->|Auto SSL/TLS| D
+    H[Cloudflare Analytics] -->|Monitor| B
     H -->|Monitor| D
+    I[Web Analytics] -->|Track| E
 ```
 
 ## 🚀 Features
@@ -61,7 +62,7 @@ graph TD
 - 📝 Technical blog with markdown support
 - 💼 Project showcase with skill tags
 - 📄 Interactive resume with PDF download
-- 🏷️ Skill categorization (AWS, Docker, Kubernetes, etc.)
+- 🏷️ Skill categorization (AWS, Cloudflare, Docker, Kubernetes, etc.)
 - 📊 Project filtering by technology
 
 ## 📦 Installation
@@ -95,8 +96,8 @@ pnpm preview
 
 ### Environment Variables
 ```env
-# .env.local
-PUBLIC_SITE_URL=https://ridwansukri.com
+# .env.local (for local development)
+PUBLIC_SITE_URL=https://www.ridwansukri.com
 PUBLIC_GA_ID=G-XXXXXXXXXX
 ```
 
@@ -113,6 +114,8 @@ Edit `src/config/site.ts` to update:
 /
 ├── public/              # Static assets
 │   ├── robots.txt      # SEO robots file
+│   ├── _headers        # Cloudflare security headers
+│   ├── _redirects      # Cloudflare redirects
 │   └── assets/         # Images, fonts
 ├── src/
 │   ├── components/     # Reusable components
@@ -121,14 +124,14 @@ Edit `src/config/site.ts` to update:
 │   ├── layouts/        # Page layouts
 │   ├── pages/          # Route pages
 │   └── styles/         # Global styles
-├── amplify.yml         # AWS Amplify config
+├── wrangler.toml       # Cloudflare config (optional)
 ├── astro.config.mjs    # Astro configuration
 └── package.json        # Dependencies
 ```
 
 ## 🚢 Deployment
 
-### AWS Amplify Deployment
+### Cloudflare Pages Deployment
 
 1. **Connect Repository**
    ```bash
@@ -137,36 +140,45 @@ Edit `src/config/site.ts` to update:
    git push -u origin main
    ```
 
-2. **AWS Amplify Setup**
-   - Navigate to AWS Amplify Console
-   - Connect GitHub repository
-   - Configure build settings (amplify.yml)
+2. **Cloudflare Pages Setup**
+   - Login to [Cloudflare Dashboard](https://dash.cloudflare.com/)
+   - Choose "Workers & Pages" from sidebar
+   - Click "Create application" → "Pages" → "Connect to Git"
+   - Authorize GitHub and choose repository
+   - Configure build settings:
+     - Framework preset: `Astro`
+     - Build command: `pnpm build`
+     - Build output directory: `dist`
+     - Node version: `20`
    - Deploy
 
 3. **Custom Domain**
-   - Add domain in Amplify Console
-   - Configure Route 53 DNS
-   - Enable SSL certificate
+   - On Cloudflare Pages dashboard, choose project
+   - Tab "Custom domains" → "Set up a custom domain"
+   - Enter `www.ridwansukri.com` and `ridwansukri.com`
+   - DNS and SSL will be configured automatically.
 
 ### CI/CD Pipeline
 
 The deployment pipeline automatically:
 1. Runs on push to `main` branch
-2. Installs dependencies
-3. Runs build process
-4. Deploys to AWS Amplify
-5. Invalidates CloudFront cache
-6. Sends deployment notifications
+2. Triggers Cloudflare Pages build
+3. Installs dependencies with pnpm
+4. Runs build process (Astro)
+5. Deploys to Cloudflare global network
+6. Purges cache automatically
+7. Preview deployments for other branches
 
 ## 🔒 Security
 
 ### Security Headers
 ```yaml
-# Configured in amplify.yml
+# Configured in public/_headers
 - X-Frame-Options: SAMEORIGIN
 - X-Content-Type-Options: nosniff
 - Strict-Transport-Security: max-age=63072000
 - Content-Security-Policy: default-src 'self'
+- Permissions-Policy: camera=(), microphone=()
 ```
 
 ### Best Practices
@@ -178,11 +190,12 @@ The deployment pipeline automatically:
 
 ## 📊 Performance Optimization
 
-- **Image Optimization**: Automatic WebP conversion
+- **Image Optimization**: Automatic WebP conversion with Cloudflare Polish (optional)
 - **Code Splitting**: Route-based splitting
-- **Caching Strategy**: CloudFront CDN caching
-- **Compression**: Brotli compression
+- **Caching Strategy**: Cloudflare CDN with smart caching
+- **Compression**: Automatic Brotli/Gzip compression
 - **Minification**: HTML, CSS, JS minification
+- **Auto Minify**: Cloudflare Auto Minify for HTML, CSS, JS
 
 ## 🧪 Testing
 
@@ -199,10 +212,11 @@ pnpm run build
 
 ## 📈 Monitoring
 
-- **Uptime**: AWS CloudWatch Synthetics
-- **Performance**: CloudWatch RUM
-- **Errors**: CloudWatch Logs
-- **Analytics**: Google Analytics 4
+- **Uptime**: Cloudflare Analytics
+- **Performance**: Web Analytics & Core Web Vitals
+- **Errors**: Cloudflare Logs (Enterprise) or Pages Functions Logs
+- **Analytics**: Google Analytics 4 + Cloudflare Web Analytics
+- **Security**: Cloudflare Security Analytics
 
 ## 🤝 Contributing
 
@@ -221,15 +235,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 Author
 
 **Muh Ridwan Sukri**
-- Website: [ridwansukri.com](https://www.ridwansukri.com)
+- Website: [www.ridwansukri.com](https://www.ridwansukri.com)
 - GitHub: [@ridwansukri](https://github.com/ridwansukri)
-- LinkedIn: [Ridwan Sukri](https://linkedin.com/in/ridwansukri)
+- LinkedIn: [Muh Ridwan Sukri](https://linkedin.com/in/ridwansukri)
 
 ## 🙏 Acknowledgments
 
 - Original theme by [Astro Aria](https://github.com/ccbikai/astro-aria)
 - Icons by [Heroicons](https://heroicons.com)
-- Deployed on [AWS Amplify](https://aws.amazon.com/amplify/)
+- Deployed on [Cloudflare Pages](https://pages.cloudflare.com/)
 
 ---
 
