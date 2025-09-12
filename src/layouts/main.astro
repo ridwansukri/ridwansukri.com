@@ -4,75 +4,81 @@ import Header from "../components/header.astro";
 import SquareLines from "../components/square-lines.astro";
 import { siteConfig } from "../config/site";
 
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  keywords?: string[];
+}
+
 const {
-	title = siteConfig.title,
-	description = siteConfig.description,
-	ogImage = siteConfig.ogImage,
-	keywords = siteConfig.keywords,
+  title = siteConfig.title,
+  description = siteConfig.description,
+  ogImage = siteConfig.ogImage,
+  keywords = siteConfig.keywords,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, siteConfig.url);
 ---
 
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="keywords" content={keywords?.join(", ")} />
-    <meta name="author" content={siteConfig.author.name} />
-    <link rel="canonical" href={canonicalURL} />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:site_name" content={siteConfig.name} />
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={canonicalURL} />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
-    
-    <!-- Security Headers -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {keywords && <meta name="keywords" content={keywords.join(", ")} />}
+  <meta name="author" content={siteConfig.author.name} />
+  <link rel="canonical" href={canonicalURL.toString()} />
 
-    <!-- Used to add dark mode right away, adding here prevents any flicker -->
-    <script is:inline>
-      if (typeof Storage !== 'undefined') {
-        if (
-          localStorage.getItem('dark_mode') &&
-          localStorage.getItem('dark_mode') == 'true'
-        ) {
-          document.documentElement.classList.add('dark')
-        }
-      }
-    </script>
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL.toString()} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content={siteConfig.name} />
 
-    <style>
-      .prose img {
-        border-radius: 20px;
-      }
-    </style>
-    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.png" />
-    <script src="../assets/css/main.css"></script>
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={canonicalURL.toString()} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Dark mode script -->
+  <script is:inline>
+    if (typeof Storage !== "undefined" && localStorage.getItem("dark_mode") === "true") {
+      document.documentElement.classList.add("dark");
+    }
+  </script>
+
+  <style>
+    .prose img {
+      border-radius: 20px;
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <!-- Header injection -->
+  {import.meta.env.HEADER_INJECT && (
     <Fragment set:html={import.meta.env.HEADER_INJECT} />
-  </head>
-  <body class="antialiased bg-white dark:bg-neutral-950">
-    <SquareLines />
-    <Header />
-    <slot />
-    <Footer />
-    <script src="../assets/js/main.js"></script>
-    <Fragment set:html={import.meta.env.FOOTER_INJECT} />
-  </body>
+  )}
+</head>
+<body class="antialiased bg-white dark:bg-neutral-950">
+<SquareLines />
+<Header />
+<main>
+  <slot />
+</main>
+<Footer />
+
+<!-- Footer injection -->
+{import.meta.env.FOOTER_INJECT && (
+  <Fragment set:html={import.meta.env.FOOTER_INJECT} />
+)}
+</body>
 </html>

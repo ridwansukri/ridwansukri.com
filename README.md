@@ -96,9 +96,9 @@ pnpm preview
 
 ### Environment Variables
 ```env
-# .env.local (for local development)
-PUBLIC_SITE_URL=https://www.ridwansukri.com
-PUBLIC_GA_ID=G-XXXXXXXXXX
+# Github Action Secrets
+CLOUDFLARE_ACCOUNT_ID
+CLOUDFLARE_API_TOKEN
 ```
 
 ### Site Configuration

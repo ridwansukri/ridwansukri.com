@@ -1,21 +1,43 @@
-import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+import tailwind from '@astrojs/tailwind';
 
-// https://astro.build/config
 export default defineConfig({
-	site: "https://www.ridwansukri.com",
-	integrations: [tailwind(), sitemap()],
-	compressHTML: true,
-	build: {
-		inlineStylesheets: "auto",
-	},
-	vite: {
-		build: {
-			cssMinify: "lightningcss",
-		},
-		ssr: {
-			external: ["svgo"],
-		},
-	},
+  site: 'https://www.ridwansukri.com',
+
+  integrations: [
+    tailwind(),
+    sitemap({
+      customPages: [
+        'https://www.ridwansukri.com/resume',
+        'https://www.ridwansukri.com/posts',
+        'https://www.ridwansukri.com/projects',
+        'https://www.ridwansukri.com/about'
+      ],
+      filter: (page) => !page.includes('/admin/'),
+      changefreq: 'weekly',
+      priority: 0.7
+    })
+  ],
+
+  // SEO optimizations
+  markdown: {
+    shikiConfig: {
+      theme: 'dracula',
+      wrap: true
+    }
+  },
+
+  // Performance optimizations  
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          entryFileNames: 'assets/js/[name].[hash].js',
+          chunkFileNames: 'assets/js/[name].[hash].js',
+          assetFileNames: 'assets/[ext]/[name].[hash].[ext]'
+        }
+      }
+    }
+  }
 });
